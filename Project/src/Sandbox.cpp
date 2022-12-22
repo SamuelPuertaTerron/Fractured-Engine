@@ -4,15 +4,19 @@ namespace Sandbox
 {
 	WindowSettings Sandbox::GetWindowSettings()
 	{
-		return WindowSettings();
+		WindowSettings windowSettings;
+		windowSettings.title = "Fractured Application";
+		windowSettings.windowSettingsInternal.displayFps = true;
+		return windowSettings;
 	}
+
 	void Sandbox::OnAppCreate()
 	{
 
 	}
 	void Sandbox::OnAppUpdate()
 	{
-
+		
 	}
 	void Sandbox::OnAppRender()
 	{

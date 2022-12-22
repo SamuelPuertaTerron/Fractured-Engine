@@ -2,6 +2,10 @@
 
 #include "glad/glad.h"
 
+#include "FLogger.h"
+#include "Fractured/Rendering/RenderManager.h"
+
+
 namespace FracturedInternal
 {
 	std::unique_ptr<FEngine> FEngine::sInstance;
@@ -18,11 +22,17 @@ namespace FracturedInternal
 
 	void FEngine::Run(const std::shared_ptr<FApp> app)
 	{
+		FR_LOG_INFO("Version: ", mVersion);
+
 		mApp = app;
 
 		glfwInit();
 
 		mWindow = std::make_unique<FWindow>();
+
+		mRenderingManager = std::make_unique<Render::FRenderingManager>();
+
+		bDisplayFps = mApp->GetWindowSettings().windowSettingsInternal.displayFps;
 
 		if(mWindow->WindowInit(mApp->GetWindowSettings()))
 		{
@@ -36,12 +46,32 @@ namespace FracturedInternal
 				{
 					app->OnAppUpdate();
 					glfwPollEvents();
-					glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-					glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+					mRenderingManager->BeginRender();
 					app->OnAppRender();
-					glfwSwapBuffers(mWindow->mGlfwWindow);
+					mRenderingManager->EndRender();
+
+					
+
+					if(bDisplayFps)
+					{
+						DisplayFPS();
+					}
 				}
 			}
+		}
+	}
+	void FEngine::DisplayFPS() const
+	{
+		static int frames = 0;
+		static double lastTime = 0;
+		double currentTime = glfwGetTime();
+		frames++;
+		if (currentTime - lastTime >= 1.0) 
+		{
+			FR_LOG("FPS: ", std::to_string(frames));
+			frames = 0;
+			lastTime = currentTime;
 		}
 	}
 }

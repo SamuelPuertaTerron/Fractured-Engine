@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Core/FEngine.h"
+#include "Fractured/Core/FEngine.h"
 
 using namespace FracturedInternal;
 
-std::shared_ptr<FApp> CreateApp();
+inline std::shared_ptr<FApp> CreateApp();
 
 int main(int argc, char* argv[])
 {

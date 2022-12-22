@@ -1,5 +1,5 @@
 #pragma once
-#include "Fractured/Fractured.h"
+#include "Fractured.h"
 
 using namespace FracturedInternal;
 
@@ -17,8 +17,6 @@ namespace Sandbox
 		void OnAppUpdate() override;
 		void OnAppRender() override;
 	};
-
-
 }
 
 std::shared_ptr<FApp> CreateApp()
