@@ -1,4 +1,4 @@
-[submodule "core/vendor/glfw"]
+[submodule "Core/vendor/glfw"]
 	path = Core/vendor/glfw
 	url = https://github.com/SamuelPuertaTerron/glfw.git
 [submodule "Core/vendor/glm"]
