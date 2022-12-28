@@ -7,17 +7,26 @@ project "Fractured Engine"
     targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "frpch.h"
+    pchsource "src/frpch.cpp"
+
     files
     {
         "src/**.h",
-        "src/**.cpp"
+        "src/**.cpp",
+        "vendor/stb_image/**.h",
+		"vendor/stb_image/**.cpp",
+		"vendor/glm/glm/**.hpp",
+		"vendor/glm/glm/**.inl",
     }
 
     includedirs
     {
         "src",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.GLAD}"
+        "%{IncludeDir.GLAD}",
+        "%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
     }
 
     links

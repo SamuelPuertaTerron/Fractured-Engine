@@ -10,7 +10,9 @@ project "Fractured-Sandbox"
 	files
 	{
 		"src/**.h",
-		"src/**.cpp"
+		"src/**.cpp",
+		"vendor/glm/glm/**.hpp",
+		"vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -19,6 +21,7 @@ project "Fractured-Sandbox"
 		"../Core/vendor",
 		"../Core/%{IncludeDir.GLFW}",
 		"../Core/%{IncludeDir.GLAD}",
+		"../Core/%{IncludeDir.glm}"
 	}
 
 	links

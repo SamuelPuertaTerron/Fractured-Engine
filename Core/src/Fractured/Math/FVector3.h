@@ -2,14 +2,15 @@
 
 namespace FracturedInternal::Math
 {
-	struct FVector2
+	struct FVector3
 	{
 	public:
-		FVector2();
-		FVector2(float x, float y);
+		FVector3();
+		FVector3(float x, float y, float z);
 	public:
 		float x;
 		float y;
+		float z;
 	};
 }
 

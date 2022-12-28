@@ -1,3 +1,4 @@
+#include "frpch.h"
 #include "FWindow.h"
 
 #include "FLogger.h"
@@ -23,7 +24,7 @@ namespace FracturedInternal
 
 		glfwMakeContextCurrent(mGlfwWindow);
 
-		if (settings.windowSettingsInternal.capFps)
+		if (settings.vsync)
 		{
 			glfwSwapInterval(1);
 		}

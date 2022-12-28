@@ -1,21 +1,23 @@
 #pragma once
 #include "Fractured.h"
 
-using namespace FracturedInternal;
+using namespace Fractured;
 
 namespace Sandbox
 {
-	class Sandbox : public FApp
+	class Sandbox : public Application
 	{
 	public:
 		Sandbox() = default;
 		virtual ~Sandbox() = default;
 
-	public:
+	protected:
 		WindowSettings GetWindowSettings() override;
 		void OnAppCreate() override;
-		void OnAppUpdate() override;
+		void OnAppUpdate(float DeltaTime) override;
 		void OnAppRender() override;
+	private:
+		GameObject actor;
 	};
 }
 

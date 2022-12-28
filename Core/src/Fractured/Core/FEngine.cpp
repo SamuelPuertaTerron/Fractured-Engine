@@ -1,4 +1,5 @@
-﻿#include "FEngine.h"
+﻿#include "frpch.h"
+#include "FEngine.h"
 
 #include "glad/glad.h"
 
@@ -31,6 +32,8 @@ namespace FracturedInternal
 		mWindow = std::make_unique<FWindow>();
 
 		mRenderingManager = std::make_unique<Render::FRenderingManager>();
+		mSpriteRenderer = std::make_unique<Render::SpriteRenderer>();
+		mScene = std::make_shared<Scene::Scene>();
 
 		bDisplayFps = mApp->GetWindowSettings().windowSettingsInternal.displayFps;
 
@@ -38,21 +41,34 @@ namespace FracturedInternal
 		{
 			if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			{
+				mRenderingManager->CreateShader();
+				mSpriteRenderer->BuildShape();
+
+				mRenderingManager->GetAllTexturesFromFolder();
+
+				glEnable(GL_BLEND);
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 				glViewport(0, 0, app->GetWindowSettings().width, app->GetWindowSettings().height);
 
 				app->OnAppCreate();
 
 				while (!glfwWindowShouldClose(mWindow->mGlfwWindow))
 				{
-					app->OnAppUpdate();
+					float const time = static_cast<float>(glfwGetTime());
+					mDeltaTime = time - mLastFrameTime;
+					mLastFrameTime = time;
+
+					mRenderingManager->BeginRender(mRenderingManager->GetClearColour());
+
+					app->OnAppUpdate(mDeltaTime);
+					mScene->Update();
 					glfwPollEvents();
 
-					mRenderingManager->BeginRender();
 					app->OnAppRender();
+					mScene->Render();
+
 					mRenderingManager->EndRender();
-
 					
-
 					if(bDisplayFps)
 					{
 						DisplayFPS();
