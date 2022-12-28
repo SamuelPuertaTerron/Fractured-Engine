@@ -10,6 +10,5 @@ Copy the line below and paste it into the command prompt window.
 ```
 git clone --recursive https://github.com/SamuelPuertaTerron/Fractured-Engine.git
 ```
-
 Run build.bat and open Fractured Engine.sln in Visual Studio 2022.
 
