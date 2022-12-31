@@ -15,8 +15,8 @@ namespace FracturedInternal::Render
 	{
 		mSpriteShader = Shader();
 
-		mSpriteShader.BuildShader("..\\Project\\Resources\\Shaders\\sprite.vert",
-			"..\\Project\\Resources\\Shaders\\sprite.frag");
+		mSpriteShader.BuildShader("Resources\\Shaders\\sprite.vert",
+			"Resources\\Shaders\\sprite.frag");
 	}
 
 
@@ -34,7 +34,7 @@ namespace FracturedInternal::Render
 
 	void FRenderingManager::GetAllTexturesFromFolder()
 	{
-		const std::string& path = "..\\Project\\Resources\\Sprites";
+		const std::string& path = "Resources\\Sprites";
 
 		for (const auto& entry : std::filesystem::directory_iterator(path))
 		{

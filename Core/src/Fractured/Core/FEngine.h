@@ -39,7 +39,7 @@ namespace FracturedInternal
 		std::unique_ptr<Render::SpriteRenderer> mSpriteRenderer;
 		std::shared_ptr<Scene::Scene> mScene;
 
-		std::string mVersion = "0.0.1";
+		std::string mVersion = "1.0.0";
 		bool bDisplayFps = false;
 
 		float mDeltaTime = 0;

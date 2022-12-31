@@ -1,7 +1,8 @@
 workspace("Fractured Engine")
 	configurations { "Debug", "Release" }
 	architecture("x64")
-	
+	startproject "Fractured-Sandbox"
+
   	flags
 	{
 		"MultiProcessorCompile"

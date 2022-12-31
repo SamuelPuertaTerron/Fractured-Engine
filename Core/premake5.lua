@@ -45,9 +45,18 @@ project "Fractured Engine"
         }
 
     filter "configurations:Debug"
+        defines
+        {
+            "FR_DEBUG"
+        }
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
+        defines
+        {
+            "FR_RELEASE"
+        }
 		runtime "Release"
-        optimize "on"
+        optimize "On"
+        symbols "off"

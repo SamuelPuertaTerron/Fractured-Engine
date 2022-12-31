@@ -38,9 +38,18 @@ project "Fractured-Sandbox"
 		}
 
 	filter "configurations:Debug"
+        defines
+        {
+            "FR_DEBUG"
+        }
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
+        defines
+        {
+            "FR_RELEASE"
+        }
+		kind "WindowedApp"
 		runtime "Release"
         optimize "on"

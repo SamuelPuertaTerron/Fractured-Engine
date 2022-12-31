@@ -12,12 +12,13 @@
 #include "Fractured/Actor/FActor.h"
 #include "Fractured/Actor/Component.h"
 
+
+using namespace FracturedInternal::Actor;
+using namespace FracturedInternal::Input;
+using namespace FracturedInternal::Math;
+
 namespace Fractured
 {
-	using namespace FracturedInternal::Actor;
-	using namespace FracturedInternal::Input;
-	using namespace FracturedInternal::Math;
-
 	using Engine = FracturedInternal::FEngine;
 	using Application = FracturedInternal::FApp;
 	using Input = FracturedInternal::Input::FInputManager;
