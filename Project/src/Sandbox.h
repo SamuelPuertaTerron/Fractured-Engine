@@ -17,7 +17,6 @@ namespace Sandbox
 		void OnAppUpdate(float DeltaTime) override;
 		void OnAppRender() override;
 	private:
-		GameObject p;
 	};
 }
 
