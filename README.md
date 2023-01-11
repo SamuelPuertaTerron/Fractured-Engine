@@ -1,7 +1,7 @@
 # Fractured-Engine
 A 2D game engine built using C++ and OpenGL for educational purposes
 
-At the moment this game engine is Windows only
+This engine will only be for Windows OS
 
 ## Installation
 
