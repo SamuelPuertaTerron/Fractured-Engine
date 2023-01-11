@@ -4,3 +4,9 @@
 [submodule "Core/vendor/glfw"]
 	path = Core/vendor/glfw
 	url = https://github.com/SamuelPuertaTerron/glfw.git
+[submodule "Core/vendor/imgui"]
+	path = Core/vendor/imgui
+	url = https://github.com/SamuelPuertaTerron/imgui.git
+[submodule "Core/vendor/box2d"]
+	path = Core/vendor/box2d
+	url = https://github.com/SamuelPuertaTerron/box2d.git

@@ -25,7 +25,6 @@ namespace Sandbox
 	}
 	void Sandbox::OnAppRender()
 	{
-
 	}
 }
 

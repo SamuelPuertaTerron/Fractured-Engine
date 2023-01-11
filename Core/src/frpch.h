@@ -23,4 +23,4 @@
 	#include <Windows.h>
 #endif
 
-typedef uint32_t int32;
+typedef uint32_t fint32;

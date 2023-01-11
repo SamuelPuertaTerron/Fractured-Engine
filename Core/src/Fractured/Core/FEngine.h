@@ -2,6 +2,7 @@
 
 #include "frpch.h"
 #include "FWindow.h"
+#include "FGUIWindow.h"
 #include "FApp.h"
 #include "Fractured/Scene/Scene.h"
 
@@ -22,14 +23,14 @@ namespace FracturedInternal
 
 		void Run(const std::shared_ptr<FApp> app);
 
+		void DisplayFPS() const;
+
 		std::unique_ptr<FWindow> &GetWindow() { return mWindow; }
 		std::unique_ptr<Render::FRenderingManager>& GetRenderer() { return mRenderingManager; }
 		std::unique_ptr<Render::SpriteRenderer>& GetSpriteRenderer() { return mSpriteRenderer; }
 		std::shared_ptr<Scene::Scene> GetScene() { return mScene; }
 	private:
 		FEngine() = default;
-
-		void DisplayFPS() const;
 	private:
 		static std::unique_ptr<FEngine> sInstance;
 
@@ -43,7 +44,7 @@ namespace FracturedInternal
 		bool bDisplayFps = false;
 
 		float mDeltaTime = 0;
-		float mLastFrameTime = glfwGetTime();
+		float mLastFrameTime = static_cast<float>(glfwGetTime());
 	};
 }
 

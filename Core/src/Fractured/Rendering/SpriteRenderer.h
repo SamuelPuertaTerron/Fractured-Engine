@@ -17,7 +17,7 @@ namespace FracturedInternal::Render
 		void BuildShape();
 		void RenderShape(Math::FVector2 position, Math::FVector3 rotation, Math::FVector2 scale, Texture texture);
 	public:
-		int32 mVBO, mVAO;
+		fint32 mVBO, mVAO;
 	private:
 	};
 }

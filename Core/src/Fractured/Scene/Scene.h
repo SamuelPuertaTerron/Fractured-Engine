@@ -10,9 +10,11 @@ namespace FracturedInternal::Scene
 		Scene();
 		~Scene();
 
+		void Start();
 		void Update();
 		void Render();
 
+		EntitySystem::EntityId CreateEntity();
 		EntitySystem::EntityManager* GetEntityManager() const { return mEntityManager; }
 	private:
 		EntitySystem::EntityManager* mEntityManager;

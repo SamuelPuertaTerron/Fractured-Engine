@@ -12,7 +12,7 @@ project "Fractured-Sandbox"
 		"src/**.h",
 		"src/**.cpp",
 		"vendor/glm/glm/**.hpp",
-		"vendor/glm/glm/**.inl"
+		"vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -21,7 +21,9 @@ project "Fractured-Sandbox"
 		"../Core/vendor",
 		"../Core/%{IncludeDir.GLFW}",
 		"../Core/%{IncludeDir.GLAD}",
-		"../Core/%{IncludeDir.glm}"
+		"../Core/%{IncludeDir.glm}",
+		"../Core/%{IncludeDir.ImGui}",
+		"../Core/%{IncludeDir.Box2D}"
 	}
 
 	links
@@ -29,12 +31,19 @@ project "Fractured-Sandbox"
 		"Fractured Engine"
 	}
 
+	resources = os.mkdir("Resources")
+
 	filter "system:windows"
 		systemversion "latest"
 
 		defines
 		{
 			"FR_PLATFORM_WINDOWS"
+		}
+
+		postbuildcommands 
+		{
+			"{COPYDIR} Resources %{cfg.targetdir}/Resources"
 		}
 
 	filter "configurations:Debug"

@@ -100,7 +100,7 @@ namespace FracturedInternal::Render
 		glUniformMatrix4fv(glGetUniformLocation(id, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
 	
-	void Shader::CheckCompileErrors(int32 shader, const std::string& type)
+	void Shader::CheckCompileErrors(fint32 shader, const std::string& type)
 	{
 		int success;
 		char infoLog[1024];

@@ -4,6 +4,7 @@
 #include "glad/glad.h"
 
 #include "FLogger.h"
+#include "imgui.h"
 #include "Fractured/Rendering/RenderManager.h"
 
 
@@ -60,8 +61,9 @@ namespace FracturedInternal
 
 					mRenderingManager->BeginRender(mRenderingManager->GetClearColour());
 
-					app->OnAppUpdate(mDeltaTime);
 					mScene->Update();
+					app->OnAppUpdate(mDeltaTime);
+
 					glfwPollEvents();
 
 					app->OnAppRender();

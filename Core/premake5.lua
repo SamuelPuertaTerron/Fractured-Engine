@@ -25,6 +25,8 @@ project "Fractured Engine"
         "src",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.GLAD}",
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.Box2D}",
         "%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}"
     }
@@ -32,7 +34,9 @@ project "Fractured Engine"
     links
     {
         "GLFW",
-        "GLAD"
+        "GLAD",
+        "ImGui",
+        "Box2D",
     }
 
     filter "system:windows"

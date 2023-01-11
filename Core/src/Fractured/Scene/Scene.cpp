@@ -18,9 +18,18 @@ namespace FracturedInternal::Scene
 	}
 
 
+	void Scene::Start()
+	{
+
+	}
+
 	void Scene::Update()
 	{
-		
+		for (auto const& entity : mEntityManager->GetEntities())
+		{
+			auto const& rb = mEntityManager->Get<Actor::RigidbodyComponent>(entity.id);
+			auto const& bc = mEntityManager->Get<Actor::BoxColliderComponent>(entity.id);
+		}
 	}
 	void Scene::Render()
 	{
@@ -32,5 +41,9 @@ namespace FracturedInternal::Scene
 			if(render)
 				FEngine::GetInstance()->GetSpriteRenderer()->RenderShape(transform->Position, transform->Rotation, transform->Scale, render->Sprite);
 		}
+	}
+	EntitySystem::EntityId Scene::CreateEntity()
+	{
+		return mEntityManager->CreateEntity();
 	}
 }

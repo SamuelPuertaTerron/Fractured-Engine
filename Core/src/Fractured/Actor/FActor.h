@@ -6,7 +6,6 @@
 #include "Fractured/Math/FRandom.h"
 #include "Entity System/Entity.h"
 #include "Fractured/Core/FEngine.h"
-#include "Fractured/Core/FEngine.h"
 #include "Fractured/Core/FLogger.h"
 
 namespace FracturedInternal
@@ -56,6 +55,6 @@ namespace FracturedInternal::Actor
 
 		EntitySystem::EntityId id;
 	private:
-		int32 mId = FRandom::RandomNumber(1000); 
+		fint32 mId = FRandom::RandomNumber(1000);
 	};
 }

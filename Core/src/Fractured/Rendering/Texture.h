@@ -10,8 +10,8 @@ namespace FracturedInternal::Render
 		void Generate(int width, int height, unsigned char* data);
 		void Bind() const;
 	public:
-		int32 textureId;
-		int32 width, height;
+		fint32 textureId;
+		fint32 width, height;
 	};
 }
 

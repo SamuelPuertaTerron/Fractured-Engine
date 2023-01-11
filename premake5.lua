@@ -13,12 +13,16 @@ workspace("Fractured Engine")
   IncludeDir = {}
   IncludeDir["GLFW"] = "vendor/GLFW/include"
   IncludeDir["GLAD"] = "vendor/GLAD/include"
+  IncludeDir["ImGui"] = "vendor/imgui"
+  IncludeDir["Box2D"] = "vendor/box2d/include"
   IncludeDir["glm"] = "vendor/glm"
   IncludeDir["stb_image"] = "vendor/stb_image"
   
   group "Dependencies"
     include "Core/vendor/GLFW"
 	include "Core/vendor/GLAD"
+	include "Core/vendor/imgui"
+	include "Core/vendor/box2d"
   group ""
 
 	filter "Debug"

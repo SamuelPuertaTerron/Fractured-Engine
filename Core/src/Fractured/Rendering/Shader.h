@@ -19,11 +19,11 @@ namespace FracturedInternal::Render
 		void SetVec4(const std::string& name, glm::vec4& vec) const;
 		void SetMat4(const std::string& name, glm::mat4& mat) const;
 
-		[[nodiscard]] int32 GetId() const { return  id; }
+		[[nodiscard]] fint32 GetId() const { return  id; }
 	private: 
-		int32 id;
+		fint32 id;
 	private:
-		void CheckCompileErrors(int32 shader, const std::string& type);
+		void CheckCompileErrors(fint32 shader, const std::string& type);
 	};
 }
 

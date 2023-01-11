@@ -2,6 +2,8 @@
 #include "Fractured/Math/FVector2.h"
 #include "Fractured/Rendering/SpriteRenderer.h"
 
+#include "box2d/box2d.h"
+
 namespace FracturedInternal::Actor
 {
 	using namespace Math;
@@ -23,6 +25,16 @@ namespace FracturedInternal::Actor
 
 		RenderComponent() = default;
 		RenderComponent(Texture sprite) : Sprite(sprite) {}
+	};
+
+	struct BoxColliderComponent
+	{
+		
+	};
+
+	struct RigidbodyComponent
+	{
+		b2BodyType BodyType = b2BodyType::b2_dynamicBody;
 	};
 }
 
