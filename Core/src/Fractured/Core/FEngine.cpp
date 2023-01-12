@@ -53,7 +53,7 @@ namespace FracturedInternal
 
 				app->OnAppCreate();
 
-				while (!glfwWindowShouldClose(mWindow->mGlfwWindow))
+				while (!glfwWindowShouldClose(mWindow->GetGLFWWindow()))
 				{
 					float const time = static_cast<float>(glfwGetTime());
 					mDeltaTime = time - mLastFrameTime;
@@ -78,6 +78,10 @@ namespace FracturedInternal
 				}
 			}
 		}
+
+		mApp->OnAppQuit();
+
+		Quit();
 	}
 	void FEngine::DisplayFPS() const
 	{
@@ -91,5 +95,17 @@ namespace FracturedInternal
 			frames = 0;
 			lastTime = currentTime;
 		}
+	}
+
+	void FEngine::Quit()
+	{
+		mScene.reset();
+		mRenderingManager.reset();
+		mSpriteRenderer.reset();
+
+		mWindow->Destroy();
+		mWindow.reset();
+		mApp.reset();
+		glfwTerminate();
 	}
 }

@@ -29,7 +29,7 @@ namespace FracturedInternal::Render
 
 	void FRenderingManager::EndRender()
 	{
-		glfwSwapBuffers(FEngine::GetInstance()->GetWindow()->mGlfwWindow);
+		glfwSwapBuffers(FEngine::GetInstance()->GetWindow()->GetGLFWWindow());
 	}
 
 	void FRenderingManager::GetAllTexturesFromFolder()

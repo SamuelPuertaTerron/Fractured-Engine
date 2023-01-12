@@ -24,6 +24,7 @@ namespace FracturedInternal
 		void Run(const std::shared_ptr<FApp> app);
 
 		void DisplayFPS() const;
+		void Quit();
 
 		std::unique_ptr<FWindow> &GetWindow() { return mWindow; }
 		std::unique_ptr<Render::FRenderingManager>& GetRenderer() { return mRenderingManager; }

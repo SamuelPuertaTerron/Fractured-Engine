@@ -17,6 +17,7 @@ namespace FracturedInternal
 		int width = 1270;
 		int height = 720;
 		bool vsync = true;
+		bool canResize = true;
 		WindowSettingsInternal windowSettingsInternal = WindowSettingsInternal();
 	};
 
@@ -24,9 +25,14 @@ namespace FracturedInternal
 	{
 	public:
 		bool WindowInit(const WindowSettings& settings);
+
+		void Destroy();
+
 		GLFWwindow* GetGLFWWindow() const { return mGlfwWindow; }
-	public:
+
+	private:
 		GLFWwindow* mGlfwWindow;
 	private:
+		void WindowResize();
 	};
 }

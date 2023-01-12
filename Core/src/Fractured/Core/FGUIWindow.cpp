@@ -1,8 +1,11 @@
 ﻿#include "frpch.h"
+
+#ifdef FR_DEBUG
 #include "FGUIWindow.h"
 
 #include "FEngine.h"
 #include "imgui.h"
+
 
 namespace FracturedInternal::Core
 {
@@ -14,3 +17,5 @@ namespace FracturedInternal::Core
 		ImGui::End();
 	}
 }
+
+#endif
