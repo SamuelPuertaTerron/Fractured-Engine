@@ -17,7 +17,7 @@ namespace Sandbox
 
 	void Sandbox::OnAppCreate()
 	{
-		
+
 	}
 	void Sandbox::OnAppUpdate(float DeltaTime)
 	{
@@ -25,6 +25,7 @@ namespace Sandbox
 	}
 	void Sandbox::OnAppRender()
 	{
+
 	}
 }
 

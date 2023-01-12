@@ -21,6 +21,6 @@ namespace Fractured
 {
 	using Engine = FracturedInternal::FEngine;
 	using Application = FracturedInternal::FApp;
-	using Input = FracturedInternal::Input::FInputManager;
+	using InputManager = FracturedInternal::Input::FInputManager;
 	using GameObject = FracturedInternal::Actor::FActor;
 }
