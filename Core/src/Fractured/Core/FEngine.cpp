@@ -35,6 +35,7 @@ namespace FracturedInternal
 		mRenderingManager = std::make_unique<Render::FRenderingManager>();
 		mSpriteRenderer = std::make_unique<Render::SpriteRenderer>();
 		mScene = std::make_shared<Scene::Scene>();
+		mPhysicsManager = std::make_unique<Physics::PhysicsManager>();
 
 		bDisplayFps = mApp->GetWindowSettings().windowSettingsInternal.displayFps;
 
@@ -46,6 +47,8 @@ namespace FracturedInternal
 				mSpriteRenderer->BuildShape();
 
 				mRenderingManager->GetAllTexturesFromFolder();
+
+				mPhysicsManager->Init();
 
 				glEnable(GL_BLEND);
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

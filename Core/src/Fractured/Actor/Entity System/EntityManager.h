@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "ComponentPool.h"
 #include "Entity.h"
+#include "Fractured/Core/FLogger.h"
 
 namespace FracturedInternal::EntitySystem
 {
@@ -14,9 +15,11 @@ namespace FracturedInternal::EntitySystem
 	{
 	public:
 		EntityManager() = default;
-		
+		~EntityManager();
+
 		EntityId CreateEntity();
-		
+		void DestroyEntity(EntityId id);
+
 		template<typename T>
 		T* Assign(EntityId id)
 		{
@@ -48,11 +51,26 @@ namespace FracturedInternal::EntitySystem
 			return component;
 		}
 
+		template<typename T>
+		void Remove(EntityId id)
+		{
+			// ensures you're not accessing an entity that has been deleted
+			if (mEntities[GetEntityIndex(id)].id != id)
+			{
+				return;
+			}
+
+			int componentId = GetId<T>();
+			mEntities[GetEntityIndex(id)].mask.reset(componentId);
+		}
+
 		std::vector<EntityDesc> GetEntities() const { return mEntities; }
 
 	private:
 		std::vector<EntityDesc> mEntities = std::vector<EntityDesc>();
 		std::vector<ComponentPool*> mComponentPools = std::vector<ComponentPool*>();
+
+		std::vector<EntityIndex> mFreeEntities;
 	};
 }
 

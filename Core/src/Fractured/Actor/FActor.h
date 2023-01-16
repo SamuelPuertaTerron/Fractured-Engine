@@ -48,6 +48,12 @@ namespace FracturedInternal::Actor
 			return false;
 		}
 
+		template<typename T>
+		void RemoveComponent() const
+		{
+			FracturedInternal::FEngine::GetInstance()->GetScene()->GetEntityManager()->Remove<T>(id);
+		}
+
 		TransformComponent* GetTransform() { return GetComponent<TransformComponent>(); }
 
 	public:

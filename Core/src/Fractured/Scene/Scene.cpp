@@ -3,6 +3,7 @@
 
 #include "Fractured/Core/FEngine.h"
 #include "Fractured/Actor/Component.h"
+#include "Fractured/Actor/FActor.h"
 #include "Fractured/Rendering/RenderManager.h"
 
 namespace FracturedInternal::Scene
@@ -20,30 +21,52 @@ namespace FracturedInternal::Scene
 
 	void Scene::Start()
 	{
-
+		//Physics
+		{
+			for (auto const& entity : mEntityManager->GetEntities())
+			{
+				if (EntitySystem::IsEntityValid(entity.id))
+				{
+					
+					
+				}
+			}
+		}
 	}
 
 	void Scene::Update()
 	{
-		for (auto const& entity : mEntityManager->GetEntities())
+		//Physics
 		{
-			auto const& rb = mEntityManager->Get<Actor::RigidbodyComponent>(entity.id);
-			auto const& bc = mEntityManager->Get<Actor::BoxColliderComponent>(entity.id);
+			for (auto const& entity : mEntityManager->GetEntities())
+			{
+				if (EntitySystem::IsEntityValid(entity.id))
+				{
+
+				}
+			}
 		}
 	}
 	void Scene::Render()
 	{
 		for (auto const& entity : mEntityManager->GetEntities())
 		{
-			auto const& render = mEntityManager->Get<Actor::RenderComponent>(entity.id);
-			auto const& transform = mEntityManager->Get<Actor::TransformComponent>(entity.id);
+			if(EntitySystem::IsEntityValid(entity.id))
+			{
+				auto const& render = mEntityManager->Get<Actor::RenderComponent>(entity.id);
+				auto const& transform = mEntityManager->Get<Actor::TransformComponent>(entity.id);
 
-			if(render)
-				FEngine::GetInstance()->GetSpriteRenderer()->RenderShape(transform->Position, transform->Rotation, transform->Scale, render->Sprite);
+				if (render)
+					FEngine::GetInstance()->GetSpriteRenderer()->RenderShape(transform->Position, transform->Rotation, transform->Scale, render->Sprite);
+			}
 		}
 	}
-	EntitySystem::EntityId Scene::CreateEntity()
+	EntitySystem::EntityId Scene::CreateEntity() const
 	{
 		return mEntityManager->CreateEntity();
+	}
+	void Scene::DestroyEntity(Actor::FActor actor) const
+	{
+		mEntityManager->DestroyEntity(actor.id);
 	}
 }

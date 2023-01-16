@@ -20,8 +20,8 @@ namespace FracturedInternal::Physics
 		~PhysicsManager();
 
 		void Init();
-	private:
-		void PhysicsStart();
+
+		b2World* GetPhysicsWorld() const { return mPhysicsWorld; }
 	private:
 		b2World* mPhysicsWorld = nullptr;
 	};

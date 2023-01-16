@@ -22,6 +22,7 @@ namespace FracturedInternal
 	namespace Input
 	{
 		enum class FKeyCode;
+		enum class FMouseCode;
 		class FInputManager;
 	}
 
@@ -36,6 +37,10 @@ namespace FracturedInternal
 		struct RigidbodyComponent;
 	}
 
+	namespace Physics
+	{
+		class FCollisions;
+	}
 }
 
 namespace Fractured
@@ -45,8 +50,10 @@ namespace Fractured
 	using Application = FracturedInternal::FApp;
 	using InputManager = FracturedInternal::Input::FInputManager;
 	using GameObject = FracturedInternal::Actor::FActor;
+	using Collision = FracturedInternal::Physics::FCollisions;
 
 	using KeyCode = FracturedInternal::Input::FKeyCode;
+	using MouseCode = FracturedInternal::Input::FMouseCode;
 
 	using Colour = FracturedInternal::FColour;
 

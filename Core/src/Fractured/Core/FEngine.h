@@ -6,6 +6,8 @@
 #include "FApp.h"
 #include "Fractured/Scene/Scene.h"
 
+#include "Fractured/Physiscs/PhysicsManager.h"
+
 namespace FracturedInternal
 {
 	namespace Render
@@ -30,6 +32,7 @@ namespace FracturedInternal
 		std::unique_ptr<Render::FRenderingManager>& GetRenderer() { return mRenderingManager; }
 		std::unique_ptr<Render::SpriteRenderer>& GetSpriteRenderer() { return mSpriteRenderer; }
 		std::shared_ptr<Scene::Scene> GetScene() { return mScene; }
+		std::unique_ptr<Physics::PhysicsManager>& GetPhysicsManager() { return mPhysicsManager; }
 	private:
 		FEngine() = default;
 	private:
@@ -40,6 +43,8 @@ namespace FracturedInternal
 		std::unique_ptr<Render::FRenderingManager> mRenderingManager;
 		std::unique_ptr<Render::SpriteRenderer> mSpriteRenderer;
 		std::shared_ptr<Scene::Scene> mScene;
+		std::unique_ptr<Physics::PhysicsManager> mPhysicsManager;
+
 
 		std::string mVersion = "1.0.0";
 		bool bDisplayFps = false;

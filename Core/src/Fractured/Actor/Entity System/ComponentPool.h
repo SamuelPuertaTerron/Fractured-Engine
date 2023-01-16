@@ -2,7 +2,7 @@
 
 namespace FracturedInternal::EntitySystem
 {
-	constexpr int MAX_ENTITIES = 15;
+	constexpr int MAX_ENTITIES = 500;
 
 	class ComponentPool
 	{

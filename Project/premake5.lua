@@ -21,9 +21,9 @@ project "Fractured-Sandbox"
 		"../Core/vendor",
 		"../Core/%{IncludeDir.GLFW}",
 		"../Core/%{IncludeDir.GLAD}",
-		"../Core/%{IncludeDir.glm}",
 		"../Core/%{IncludeDir.ImGui}",
-		"../Core/%{IncludeDir.Box2D}"
+        "../Core/%{IncludeDir.Box2D}",
+		"../Core/%{IncludeDir.glm}",
 	}
 
 	links

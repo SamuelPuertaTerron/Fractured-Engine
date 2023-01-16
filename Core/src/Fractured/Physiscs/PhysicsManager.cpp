@@ -17,12 +17,7 @@ namespace FracturedInternal::Physics
 
 	void PhysicsManager::Init()
 	{
-
-	}
-
-	void PhysicsManager::PhysicsStart()
-	{
-		
+		mPhysicsWorld = new b2World({ 0.0f, -9.8f });
 	}
 }
 
