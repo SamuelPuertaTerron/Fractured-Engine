@@ -34,9 +34,7 @@ namespace Sandbox
 		 */
 		void OnAppQuit()				   override;
 	private:
-		GameObject object;
-		GameObject object2;
-		GameObject object3;
+		
 	};
 }
 

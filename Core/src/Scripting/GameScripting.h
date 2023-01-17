@@ -57,6 +57,12 @@ namespace Fractured
 
 	using Colour = FracturedInternal::FColour;
 
+	//Math
+	using Vector2 = FracturedInternal::Math::FVector2;
+	using Vector3 = FracturedInternal::Math::FVector3;
+	using Random = FracturedInternal::Math::FRandom;
+
+
 	//Components
 	using TransformComponent = FracturedInternal::Actor::TransformComponent;
 	using RenderComponent = FracturedInternal::Actor::RenderComponent;

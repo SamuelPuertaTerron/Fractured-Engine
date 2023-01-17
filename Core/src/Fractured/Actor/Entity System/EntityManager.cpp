@@ -30,6 +30,7 @@ namespace FracturedInternal::EntitySystem
 		Assign<TransformComponent>(mEntities.back().id);
 		return mEntities.back().id;
 	}
+
 	void EntityManager::DestroyEntity(EntityId id)
 	{
 		const EntityId newId = CreateEntityId(static_cast<EntityIndex>(-1), GetEntityVersion(id) + 1);
