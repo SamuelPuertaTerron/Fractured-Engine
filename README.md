@@ -3,6 +3,8 @@ A 2D game engine built using C++ and OpenGL for educational purposes
 
 This engine will only be for Windows OS
 
+This is the Developer Branch and Used for engine development
+
 ## Installation
 
 Copy the line below and paste it into the command prompt window.
