@@ -3,7 +3,7 @@ A 2D game engine built using C++ and OpenGL for educational purposes
 
 This engine will only be for Windows OS
 
-This is the Developer Branch and Used for engine development
+This is the Developer Branch and Used for engine development if you want to make a game use the main branch instead.
 
 ## Installation
 
