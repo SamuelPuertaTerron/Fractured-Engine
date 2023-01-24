@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "FColour.h"
-#include "Shader.h"
-#include "Texture.h"
-#include "SpriteRenderer.h"
+#include "FShader.h"
+#include "FTexture.h"
+#include "FSpriteRenderer.h"
 
 namespace FracturedInternal
 {
@@ -11,7 +11,7 @@ namespace FracturedInternal
 
 namespace FracturedInternal::Render
 {
-	class SpriteRenderer;
+	class FSpriteRenderer;
 
 	class FRenderingManager
 	{
@@ -29,11 +29,11 @@ namespace FracturedInternal::Render
 
 		void CreateShader();
 
-		[[nodiscard]] Texture GetTexture(int index) const { return mTextures[index]; }
-		[[nodiscard]] Shader GetSpriteShader() const { return mSpriteShader; }
+		[[nodiscard]] FTexture GetTexture(int index) const { return mTextures[index]; }
+		[[nodiscard]] FShader GetSpriteShader() const { return mSpriteShader; }
 	private:
-		Shader mSpriteShader;
-		std::vector<Texture> mTextures;
+		FShader mSpriteShader;
+		std::vector<FTexture> mTextures;
 		FColour mClearColour = FColour(0.1f, 0.1f, 0.1f);
 	};
 }

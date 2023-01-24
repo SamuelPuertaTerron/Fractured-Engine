@@ -1,12 +1,12 @@
 ﻿#include "frpch.h"
-#include "Shader.h"
+#include "FShader.h"
 
 #include "Fractured/Core/FLogger.h"
 #include "glad/glad.h"
 
 namespace FracturedInternal::Render
 {
-	void Shader::BuildShader(const std::string& vertexPath, const std::string& fragmentPath)
+	void FShader::BuildShader(const std::string& vertexPath, const std::string& fragmentPath)
 	{
 		std::string vertexCode;
 		std::string fragmentCode;
@@ -60,47 +60,47 @@ namespace FracturedInternal::Render
 		glDeleteShader(fragment);
 	}
 
-	void Shader::ActivateShader()
+	void FShader::ActivateShader()
 	{
 		glUseProgram(id);
 	}
 
-	void Shader::SetBool(const std::string& name, bool value) const
+	void FShader::SetBool(const std::string& name, bool value) const
 	{
 		glUniform1i(glGetUniformLocation(id, name.c_str()), static_cast<int>(value));
 	}
 
-	void Shader::SetInt(const std::string& name, int value) const
+	void FShader::SetInt(const std::string& name, int value) const
 	{
 		glUniform1i(glGetUniformLocation(id, name.c_str()), value);
 	}
 
-	void Shader::SetFloat(const std::string& name, float value) const
+	void FShader::SetFloat(const std::string& name, float value) const
 	{
-		glUniform1i(glGetUniformLocation(id, name.c_str()), value);
+		glUniform1i(glGetUniformLocation(id, name.c_str()), static_cast<GLint>(value));
 	}
 
-	void Shader::SetVec2(const std::string& name, glm::vec2& vec) const
+	void FShader::SetVec2(const std::string& name, glm::vec2& vec) const
 	{
 		glUniform2fv(glGetUniformLocation(id, name.c_str()), 1, &vec[0]);
 	}
 
-	void Shader::SetVec3(const std::string& name, glm::vec3& vec) const
+	void FShader::SetVec3(const std::string& name, glm::vec3& vec) const
 	{
 		glUniform3fv(glGetUniformLocation(id, name.c_str()), 1, &vec[0]);
 	}
 
-	void Shader::SetVec4(const std::string& name, glm::vec4& vec) const
+	void FShader::SetVec4(const std::string& name, glm::vec4& vec) const
 	{
 		glUniform4fv(glGetUniformLocation(id, name.c_str()), 1, &vec[0]);
 	}
 
-	void Shader::SetMat4(const std::string& name, glm::mat4& mat) const
+	void FShader::SetMat4(const std::string& name, glm::mat4& mat) const
 	{
 		glUniformMatrix4fv(glGetUniformLocation(id, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
 	
-	void Shader::CheckCompileErrors(fint32 shader, const std::string& type)
+	void FShader::CheckCompileErrors(fint32 shader, const std::string& type)
 	{
 		int success;
 		char infoLog[1024];
@@ -109,7 +109,7 @@ namespace FracturedInternal::Render
 			glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 			if (!success)
 			{
-				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+				glGetShaderInfoLog(shader, 1024, nullptr, infoLog);
 				std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}
@@ -118,7 +118,7 @@ namespace FracturedInternal::Render
 			glGetShaderiv(shader, GL_LINK_STATUS, &success);
 			if (!success)
 			{
-				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+				glGetShaderInfoLog(shader, 1024, nullptr, infoLog);
 				std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}

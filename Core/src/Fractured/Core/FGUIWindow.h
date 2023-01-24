@@ -15,6 +15,7 @@ namespace FracturedInternal::Core
 
 		void DisplayWindow();
 
+		void Destroy();
 	private:
 	};
 }

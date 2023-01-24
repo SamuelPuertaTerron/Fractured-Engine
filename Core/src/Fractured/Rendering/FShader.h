@@ -3,10 +3,10 @@
 
 namespace FracturedInternal::Render
 {
-	class Shader
+	class FShader
 	{
 	public:
-		Shader() = default;
+		FShader() = default;
 
 		void BuildShader(const std::string& vertexPath, const std::string& fragmentPath);
 		void ActivateShader();

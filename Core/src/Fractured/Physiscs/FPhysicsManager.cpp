@@ -1,5 +1,5 @@
 ﻿#include "frpch.h"
-#include "PhysicsManager.h"
+#include "FPhysicsManager.h"
 #include "Fractured/Actor/Entity System/EntityManager.h"
 
 #include "box2d/b2_world.h"
@@ -10,12 +10,12 @@
 
 namespace FracturedInternal::Physics
 {
-	PhysicsManager::~PhysicsManager()
+	FPhysicsManager::~FPhysicsManager()
 	{
 		delete mPhysicsWorld;
 	}
 
-	void PhysicsManager::Init()
+	void FPhysicsManager::Init()
 	{
 		mPhysicsWorld = new b2World({ 0.0f, -9.8f });
 	}

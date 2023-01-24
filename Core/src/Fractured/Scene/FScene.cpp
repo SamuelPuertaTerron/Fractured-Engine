@@ -1,40 +1,25 @@
 ﻿#include "frpch.h"
-#include "Scene.h"
+#include "FScene.h"
 
 #include "Fractured/Core/FEngine.h"
 #include "Fractured/Actor/Component.h"
 #include "Fractured/Actor/FActor.h"
-#include "Fractured/Rendering/RenderManager.h"
+#include "Fractured/Rendering/FRenderManager.h"
 
 namespace FracturedInternal::Scene
 {
-	Scene::Scene()
+	FScene::FScene()
 	{
 		mEntityManager = new EntitySystem::EntityManager();
 	}
 
-	Scene::~Scene()
+	FScene::~FScene()
 	{
 		delete mEntityManager;
 	}
 
 
-	void Scene::Start()
-	{
-		//Physics
-		{
-			for (auto const& entity : mEntityManager->GetEntities())
-			{
-				if (EntitySystem::IsEntityValid(entity.id))
-				{
-					
-					
-				}
-			}
-		}
-	}
-
-	void Scene::Update()
+	void FScene::Start()
 	{
 		//Physics
 		{
@@ -47,7 +32,21 @@ namespace FracturedInternal::Scene
 			}
 		}
 	}
-	void Scene::Render()
+
+	void FScene::Update()
+	{
+		//Physics
+		{
+			for (auto const& entity : mEntityManager->GetEntities())
+			{
+				if (EntitySystem::IsEntityValid(entity.id))
+				{
+
+				}
+			}
+		}
+	}
+	void FScene::Render()
 	{
 		for (auto const& entity : mEntityManager->GetEntities())
 		{
@@ -61,12 +60,36 @@ namespace FracturedInternal::Scene
 			}
 		}
 	}
-	EntitySystem::EntityId Scene::CreateEntity() const
+	EntitySystem::EntityId FScene::CreateEntity() const
 	{
 		return mEntityManager->CreateEntity();
 	}
-	void Scene::DestroyEntity(Actor::FActor actor) const
+	void FScene::DestroyEntity(Actor::FActor actor) const
 	{
 		mEntityManager->DestroyEntity(actor.id);
+	}
+
+	void FScene::SpawnEntity(Actor::FActor actor) const
+	{
+		Actor::FActor newActor = actor;
+		newActor.id = CreateEntity();
+
+		if (actor.HasComponent<Actor::RenderComponent>())
+		{
+			newActor.AddComponent<Actor::RenderComponent>();
+			newActor.GetComponent<Actor::RenderComponent>()->Sprite = actor.GetComponent<Actor::RenderComponent>()->Sprite;
+		}
+	}
+	void FScene::SpawnEntity(Actor::FActor actor, Math::FVector2 position) const
+	{
+		Actor::FActor newActor = actor;
+		newActor.id = CreateEntity();
+		newActor.GetTransform()->Position = position;
+
+		if (actor.HasComponent<Actor::RenderComponent>())
+		{
+			newActor.AddComponent<Actor::RenderComponent>();
+			newActor.GetComponent<Actor::RenderComponent>()->Sprite = actor.GetComponent<Actor::RenderComponent>()->Sprite;
+		}
 	}
 }

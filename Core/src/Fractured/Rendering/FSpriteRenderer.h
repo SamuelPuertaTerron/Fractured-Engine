@@ -1,21 +1,21 @@
 ﻿#pragma once
 
-#include "RenderManager.h"
-#include "Texture.h"
+#include "FRenderManager.h"
+#include "FTexture.h"
 #include "Fractured/Math/FVector2.h"
 #include "Fractured/Math/FVector3.h"
 
 namespace FracturedInternal::Render
 {
 	//Uses Batch Rendering for sprites
-	class SpriteRenderer
+	class FSpriteRenderer
 	{
 	public:
-		SpriteRenderer() = default;
-		~SpriteRenderer();
+		FSpriteRenderer() = default;
+		~FSpriteRenderer();
 
 		void BuildShape();
-		void RenderShape(Math::FVector2 position, Math::FVector3 rotation, Math::FVector2 scale, Texture texture);
+		void RenderShape(Math::FVector2 position, Math::FVector3 rotation, Math::FVector2 scale, FTexture texture);
 	public:
 		fint32 mVBO, mVAO;
 	private:

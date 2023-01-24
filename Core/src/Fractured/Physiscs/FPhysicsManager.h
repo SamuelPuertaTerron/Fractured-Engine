@@ -13,11 +13,11 @@ namespace FracturedInternal
 
 namespace FracturedInternal::Physics
 {
-	class PhysicsManager
+	class FPhysicsManager
 	{
 	public:
-		PhysicsManager() = default;
-		~PhysicsManager();
+		FPhysicsManager() = default;
+		~FPhysicsManager();
 
 		void Init();
 

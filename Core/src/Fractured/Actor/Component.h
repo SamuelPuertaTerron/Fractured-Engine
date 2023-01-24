@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Fractured/Math/FVector2.h"
-#include "Fractured/Rendering/SpriteRenderer.h"
+#include "Fractured/Rendering/FSpriteRenderer.h"
 
 #include "box2d/box2d.h"
 
@@ -21,10 +21,10 @@ namespace FracturedInternal::Actor
 
 	struct RenderComponent
 	{
-		Texture Sprite;
+		FTexture Sprite;
 
 		RenderComponent() = default;
-		RenderComponent(Texture sprite) : Sprite(sprite) {}
+		RenderComponent(FTexture sprite) : Sprite(sprite) {}
 	};
 
 	struct BoxColliderComponent

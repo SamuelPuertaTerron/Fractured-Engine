@@ -18,11 +18,15 @@ project "Fractured Engine"
 		"vendor/stb_image/**.cpp",
 		"vendor/glm/glm/**.hpp",
 		"vendor/glm/glm/**.inl",
+
+        "ImGui/**.h",
+        "ImGui/**.cpp",
     }
 
     includedirs
     {
         "src",
+        "ImGui",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.GLAD}",
         "%{IncludeDir.ImGui}",
@@ -33,10 +37,10 @@ project "Fractured Engine"
 
     links
     {
+        "Box2D",
         "GLFW",
         "GLAD",
         "ImGui",
-        "Box2D",
     }
 
     filter "system:windows"

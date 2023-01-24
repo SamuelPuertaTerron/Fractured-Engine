@@ -21,8 +21,8 @@ project "Fractured-Sandbox"
 		"../Core/vendor",
 		"../Core/%{IncludeDir.GLFW}",
 		"../Core/%{IncludeDir.GLAD}",
-		"../Core/%{IncludeDir.ImGui}",
         "../Core/%{IncludeDir.Box2D}",
+		"../Core/%{IncludeDir.ImGui}",
 		"../Core/%{IncludeDir.glm}",
 	}
 
@@ -30,8 +30,6 @@ project "Fractured-Sandbox"
 	{
 		"Fractured Engine"
 	}
-
-	resources = os.mkdir("Resources")
 
 	filter "system:windows"
 		systemversion "latest"

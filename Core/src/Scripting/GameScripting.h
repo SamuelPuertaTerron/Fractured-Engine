@@ -6,6 +6,13 @@
 #include "Fractured/Actor/FActor.h"
 #include "Fractured/Actor/Component.h"
 
+#include "Fractured/Physiscs/FCollisions.h"
+
+#include "Fractured/Core/ImGUI/ImGuiLoader.h"
+#include "Fractured/Core/ImGUI/FGUIPanel.h"
+#include "Fractured/Core/ImGUI/FGUIButton.h"
+#include "Fractured/Core/ImGUI/FGUIText.h"
+
 #include "Fractured/Core/FLogger.h"
 
 // ----- Entry Point ----- //
@@ -18,6 +25,14 @@ namespace FracturedInternal
 	class FEngine;
 
 	struct FColour;
+
+	namespace GUI
+	{
+		class FGUIButton;
+		class FGUIText;
+		class FGUIPanel;
+		class ImGuiLoader;
+	}
 
 	namespace Input
 	{

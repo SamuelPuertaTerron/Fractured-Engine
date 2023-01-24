@@ -4,6 +4,14 @@
 
 namespace FracturedInternal
 {
+	namespace Math
+	{
+		struct FVector2;
+	}
+}
+
+namespace FracturedInternal
+{
 	namespace Actor
 	{
 		class FActor;
@@ -12,11 +20,11 @@ namespace FracturedInternal
 
 namespace FracturedInternal::Scene
 {
-	class Scene
+	class FScene
 	{
 	public:
-		Scene();
-		~Scene();
+		FScene();
+		~FScene();
 
 		void Start();
 		void Update();
@@ -24,6 +32,9 @@ namespace FracturedInternal::Scene
 
 		EntitySystem::EntityId CreateEntity() const;
 		void DestroyEntity(Actor::FActor actor) const;
+
+		void SpawnEntity(Actor::FActor actor) const;
+		void SpawnEntity(Actor::FActor actor, Math::FVector2 position) const;
 
 		EntitySystem::EntityManager* GetEntityManager() const { return mEntityManager; }
 	private:

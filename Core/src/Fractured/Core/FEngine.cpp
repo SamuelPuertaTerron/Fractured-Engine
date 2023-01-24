@@ -4,8 +4,7 @@
 #include "glad/glad.h"
 
 #include "FLogger.h"
-#include "imgui.h"
-#include "Fractured/Rendering/RenderManager.h"
+#include "Fractured/Rendering/FRenderManager.h"
 
 
 namespace FracturedInternal
@@ -31,11 +30,13 @@ namespace FracturedInternal
 		glfwInit();
 
 		mWindow = std::make_unique<FWindow>();
-
+#ifdef FR_DEBUG
+		mGuiWindow = std::make_unique<Core::FGUIWindow>();
+#endif
 		mRenderingManager = std::make_unique<Render::FRenderingManager>();
-		mSpriteRenderer = std::make_unique<Render::SpriteRenderer>();
-		mScene = std::make_shared<Scene::Scene>();
-		mPhysicsManager = std::make_unique<Physics::PhysicsManager>();
+		mSpriteRenderer = std::make_unique<Render::FSpriteRenderer>();
+		mFScene = std::make_shared<Scene::FScene>();
+		mPhysicsManager = std::make_unique<Physics::FPhysicsManager>();
 
 		bDisplayFps = mApp->GetWindowSettings().windowSettingsInternal.displayFps;
 
@@ -43,6 +44,9 @@ namespace FracturedInternal
 		{
 			if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			{
+#ifdef FR_DEBUG
+				mGuiWindow->Init();
+#endif
 				mRenderingManager->CreateShader();
 				mSpriteRenderer->BuildShape();
 
@@ -64,14 +68,16 @@ namespace FracturedInternal
 
 					mRenderingManager->BeginRender(mRenderingManager->GetClearColour());
 
-					mScene->Update();
+					mFScene->Update();
 					app->OnAppUpdate(mDeltaTime);
 
-					glfwPollEvents();
-
+					mFScene->Render();
+					
 					app->OnAppRender();
-					mScene->Render();
-
+#ifdef FR_DEBUG
+					mGuiWindow->DisplayWindow();
+#endif
+					glfwPollEvents();
 					mRenderingManager->EndRender();
 					
 					if(bDisplayFps)
@@ -86,7 +92,7 @@ namespace FracturedInternal
 
 		Quit();
 	}
-	void FEngine::DisplayFPS() const
+	void FEngine::DisplayFPS()
 	{
 		static int frames = 0;
 		static double lastTime = 0;
@@ -94,18 +100,27 @@ namespace FracturedInternal
 		frames++;
 		if (currentTime - lastTime >= 1.0) 
 		{
+			mFrames = frames;
 			FR_LOG("FPS: ", std::to_string(frames));
 			frames = 0;
 			lastTime = currentTime;
 		}
 	}
 
+	int FEngine::GetFPS()
+	{
+		return mFrames;
+	}
+
+
 	void FEngine::Quit()
 	{
-		mScene.reset();
+		mFScene.reset();
 		mRenderingManager.reset();
 		mSpriteRenderer.reset();
-
+#ifdef FR_DEBUG
+		mGuiWindow->Destroy();
+#endif
 		mWindow->Destroy();
 		mWindow.reset();
 		mApp.reset();

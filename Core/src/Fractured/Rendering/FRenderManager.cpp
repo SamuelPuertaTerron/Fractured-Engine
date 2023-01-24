@@ -1,8 +1,7 @@
 ﻿#include "frpch.h"
-#include "RenderManager.h"
+#include "FRenderManager.h"
 
 #include "glad/glad.h"
-#include "GLFW/glfw3.h"
 #include "stb_image.h"
 
 #include "Fractured/Core/FEngine.h"
@@ -13,7 +12,7 @@ namespace FracturedInternal::Render
 {
 	void FRenderingManager::CreateShader()
 	{
-		mSpriteShader = Shader();
+		mSpriteShader = FShader();
 
 		mSpriteShader.BuildShader("Resources\\Shaders\\sprite.vert",
 			"Resources\\Shaders\\sprite.frag");
@@ -38,7 +37,7 @@ namespace FracturedInternal::Render
 
 		for (const auto& entry : std::filesystem::directory_iterator(path))
 		{
-			Texture texture;
+			FTexture texture;
 
 			FR_LOG("Path: ", entry.path().string());
 

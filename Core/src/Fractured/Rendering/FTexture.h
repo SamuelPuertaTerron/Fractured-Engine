@@ -2,10 +2,10 @@
 
 namespace FracturedInternal::Render
 {
-	class Texture
+	class FTexture
 	{
 	public:
-		Texture() = default;
+		FTexture() = default;
 
 		void Generate(int width, int height, unsigned char* data);
 		void Bind() const;

@@ -1,11 +1,11 @@
 ﻿#include "frpch.h"
 
-#include "Texture.h"
+#include "FTexture.h"
 #include "glad/glad.h"
 
 namespace FracturedInternal::Render
 {
-	void Texture::Generate(int width, int height, unsigned char* data)
+	void FTexture::Generate(int width, int height, unsigned char* data)
 	{
 		if (data)
 		{
@@ -30,7 +30,7 @@ namespace FracturedInternal::Render
 		}
 	}
 
-	void Texture::Bind() const
+	void FTexture::Bind() const
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, this->textureId);

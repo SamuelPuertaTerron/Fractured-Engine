@@ -1,5 +1,5 @@
 ﻿#include "frpch.h"
-#include "SpriteRenderer.h"
+#include "FSpriteRenderer.h"
 
 #include "glad/glad.h"
 #include "glm/glm.hpp"
@@ -8,18 +8,18 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include "glm/gtx/quaternion.hpp"
 
-#include "RenderManager.h"
+#include "FRenderManager.h"
 #include "Fractured/Core/FEngine.h"
 
 namespace FracturedInternal::Render
 {
-	SpriteRenderer::~SpriteRenderer()
+	FSpriteRenderer::~FSpriteRenderer()
 	{
 		glDeleteVertexArrays(1, &mVAO);
 	}
 
 
-	void SpriteRenderer::BuildShape()
+	void FSpriteRenderer::BuildShape()
 	{
 		float vertices[] = {
 			// pos      // tex
@@ -45,12 +45,12 @@ namespace FracturedInternal::Render
 		glBindVertexArray(0);
 	}
 
-	void SpriteRenderer::RenderShape(Math::FVector2 position, Math::FVector3 rotation, Math::FVector2 scale, Texture texture)
+	void FSpriteRenderer::RenderShape(Math::FVector2 position, Math::FVector3 rotation, Math::FVector2 scale, FTexture texture)
 	{
-		//Camera
+		//CameraF
 
 		glm::mat4 view = glm::mat4(1.0f);
-		// note that we're translating the scene in the reverse direction of where we want to move
+		// note that we're translating the FScene in the reverse direction of where we want to move
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -15.0f));
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(45.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
